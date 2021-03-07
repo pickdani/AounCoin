@@ -1,7 +1,7 @@
 module.exports = {
     // See <http://truffleframework.com/docs/advanced/configuration>
 
-    // how to connect to local blockchain
+    // connection to local blockchain
     networks: {
         development: {
             host: "127.0.0.1"
