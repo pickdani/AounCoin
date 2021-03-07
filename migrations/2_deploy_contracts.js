@@ -4,4 +4,3 @@ const Aouncoin = artifacts.require("Aouncoin");
 module.exports = function (deployer) {
   deployer.deploy(Aouncoin);
 };
-`

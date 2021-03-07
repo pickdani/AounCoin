@@ -1,4 +1,4 @@
-pragma solidity ^0.4.2;
+pragma solidity >=0.4.2;
 
 // Aouncoin.sol:
 // implement the ERC 20 standard, govern the behavior of the token
@@ -11,7 +11,7 @@ contract Aouncoin {
     // Read the total number of tokens
     uint256 public totalSupply;
 
-    function Aouncoin () public {
+    constructor() public {
         
         totalSupply = 1000000; // 1MM total supply (ever)
     
