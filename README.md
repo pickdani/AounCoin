@@ -1,5 +1,4 @@
-#
-Aouncoin
+#Aouncoin
 
 ### notes
 
