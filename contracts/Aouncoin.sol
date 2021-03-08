@@ -11,9 +11,10 @@ contract Aouncoin {
     // Read the total number of tokens
     uint256 public totalSupply;
 
-    constructor() public {
+    // solidity convention local var start with _
+    constructor(uint256 _initialSupply) public {
         
-        totalSupply = 1000000; // 1MM total supply (ever)
+        totalSupply = _initialSupply; // 1MM total supply (ever)
     
     }
 
