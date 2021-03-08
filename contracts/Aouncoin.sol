@@ -9,6 +9,12 @@ contract Aouncoin {
      string public symbol   = "AOUN";
      string public standard = "Aouncoin v1.0";
 
+     // transfer event complying with erc20 event
+    event Transfer(
+        address indexed _from,
+        address indexed _to,
+        uint256 _value
+    );
 
     // Constructor
     // How many Aouncoin will ever exist
@@ -27,10 +33,27 @@ contract Aouncoin {
         balanceOf[msg.sender] = _initialSupply;
         
         totalSupply = _initialSupply;
-        // allocate the initial supply
     }
 
-    // this contract is responsible for knowing where the tokens are
-    // everytime bough sold or transfer, contract must know who has each token
+    // Transfer
+    function transfer(address _to, uint256 _value) public returns (bool success) {
+        // Exception if sender balance too low
+        // Return a boolean
+        // Transfer event
+
+        // must have enough coins to send
+        require(balanceOf[msg.sender] >= _value);
+
+        // le transaction
+        balanceOf[msg.sender] -= _value;
+        balanceOf[_to] += _value;
+
+        // Transfer event
+        // MUST fire the Transfer even by ERC20 Docs
+        emit Transfer(msg.sender, _to, _value);
+
+        // only if all above is executed successfully
+        return true;
+    }
 }
 
