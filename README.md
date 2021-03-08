@@ -5,7 +5,7 @@
 - [x] transfer tokens
 - [ ] delegated transfer
 - [ ] sale contract
-- [ ] front end
+- [ ] front end + metamask
 
 
 ### notes
