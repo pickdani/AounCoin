@@ -2,5 +2,7 @@
 const Aouncoin = artifacts.require("Aouncoin");
 
 module.exports = function (deployer) {
-  deployer.deploy(Aouncoin);
+    // 100k total coin initial supply (ever)
+    deployer.deploy(Aouncoin, 100000);
 };
+
