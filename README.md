@@ -1,4 +1,5 @@
 # Aouncoin
+[![Build Status](https://travis-ci.com/pickdani/Aouncoin.svg?branch=main)](https://travis-ci.com/pickdani/Aouncoin)
 
 ### todo
 - [x] construct initial contract
