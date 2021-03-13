@@ -16,6 +16,13 @@ contract Aouncoin {
         uint256 _value
     );
 
+    // events get logged, subscribe to events care about
+    event Approval(
+        address indexed _owner,
+        address indexed _spender,
+        uint256 _value
+    );
+
     // Constructor
     // How many Aouncoin will ever exist
     // Set the total number of tokens
@@ -23,7 +30,10 @@ contract Aouncoin {
     uint256 public totalSupply;
 
     // key, value store
+    // because these are public we get getter for free
     mapping(address => uint256) public balanceOf;
+    // myaccount => (approvesthisaccount => tospendthesetokens)
+    mapping(address => mapping(address => uint256)) public allowance;
 
     // solidity convention local var start with _
     constructor(uint256 _initialSupply) public {
@@ -55,5 +65,38 @@ contract Aouncoin {
         // only if all above is executed successfully
         return true;
     }
-}
 
+    // approve, approve another account to send tokens (specific) on your behalf
+    // the _spender is the account this wallet wants to approve to spend
+    function approve(address _spender, uint256 _value) public returns (bool success) {
+        // allowance, store it in this mapping
+        allowance[msg.sender][_spender] = _value;
+
+        // Approve event, msg.sender is the account that calls this function
+        emit Approval(msg.sender, _spender, _value);
+
+        return true;
+    }
+
+    // transferFrom, someone else transfering on your behalf from approve
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
+        // three acounts: one calling function, tranfer from, tranfser to
+        // require _from has enough tokens
+        require(_value <= balanceOf[_from]);
+
+        // require the allowance is big enough
+        require(_value <= allowance[_from][msg.sender]);
+        
+        // change balance
+        balanceOf[_from] -= _value;
+        balanceOf[_to] += _value;
+
+        // update the allowance
+        allowance[_from][msg.sender] -= _value;
+
+        emit Transfer(_from, _to, _value);
+        return true;
+    }
+
+
+}

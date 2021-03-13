@@ -4,7 +4,7 @@
 ### todo
 - [x] construct initial contract
 - [x] transfer tokens
-- [ ] delegated transfer
+- [x] delegated transfer
 - [ ] sale contract
 - [ ] front end, metamask
 
