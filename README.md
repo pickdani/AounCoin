@@ -7,6 +7,7 @@
 - [x] delegated transfer
 - [ ] sale contract
 - [ ] front end, metamask
+- [ ] get travis ci continous integration to work with truffle test
 
 
 ### notes
